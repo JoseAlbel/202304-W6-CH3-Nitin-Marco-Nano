@@ -1,8 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store/store";
-import { loadCharactersAsync } from "../redux/characters.slice";
+import {
+  killCharacterAsync,
+  loadCharactersAsync,
+} from "../redux/characters.slice";
 import { ApiRepository } from "../services/api.repository";
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import { Character } from "../../models/character";
 
 export function useCharacters() {
@@ -14,12 +17,17 @@ export function useCharacters() {
     []
   );
 
-  const handleLoadCharacters = () => {
+  const handleLoadCharacters = useCallback(async () => {
     dispatch(loadCharactersAsync(repo));
+  }, [repo, dispatch]);
+
+  const handleKill = async (character: Character) => {
+    dispatch(killCharacterAsync({ repo, character }));
   };
 
   return {
     handleLoadCharacters,
     characters,
+    handleKill,
   };
 }

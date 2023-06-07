@@ -17,6 +17,13 @@ export const loadCharactersAsync = createAsyncThunk(
   }
 );
 
+export const killCharacterAsync = createAsyncThunk<
+  Character,
+  { repo: ApiRepository<Character>; character: Character }
+>("characters/update", async ({ repo, character }) => {
+  return await repo.update(character.id, { ...character, alive: false });
+});
+
 const characterSlice = createSlice({
   name: "characters",
   initialState,
@@ -25,6 +32,12 @@ const characterSlice = createSlice({
     builder.addCase(loadCharactersAsync.fulfilled, (state, { payload }) => ({
       ...state,
       characters: payload,
+    }));
+    builder.addCase(killCharacterAsync.fulfilled, (state, { payload }) => ({
+      ...state,
+      characters: state.characters.map((item) =>
+        item.id === payload.id ? payload : item
+      ),
     }));
   },
 });
