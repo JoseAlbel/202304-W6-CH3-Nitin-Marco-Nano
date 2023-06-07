@@ -15,7 +15,7 @@
       "lastname": "Lannister",
       "age": 33,
       "weapon": "sword",
-      "alive": false,
+      "alive": true,
       "warcry": "I strike first, and ask questions later",
       "dexterity": 8
     },

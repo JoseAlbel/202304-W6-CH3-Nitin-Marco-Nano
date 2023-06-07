@@ -13,22 +13,22 @@ body {
   flex-basis: auto;
   flex-grow: 0;
 }
-.charactername {
+.character__name {
   height: 60px;
 }
-.characterpicture {
+.character__picture {
   object-fit: cover;
   object-position: top;
   height: 200px;
 }
-.charactercard {
+.character__card {
   position: relative;
   border: none;
   background-color: #331c0e;
   color: #fff;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
-.characteroverlay {
+.character__overlay {
   border-radius: 0.25rem;
   position: absolute;
   padding: 25px 15px;
@@ -45,22 +45,22 @@ body {
   pointer-events: none;
   transition: all 0.2s;
 }
-.character:nth-child(even) .characteroverlay {
+.character:nth-child(even) .character__overlay {
   top: 100%;
 }
-.character:hover .characteroverlay {
+.character:hover .character__overlay {
   opacity: 1;
   pointer-events: all;
   top: 0;
 }
-.characteractions {
+.character__actions {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   height: 90px;
 }
-.characteraction {
+.character__action {
   background-color: #67331e;
   color: #fff;
   width: 80%;
