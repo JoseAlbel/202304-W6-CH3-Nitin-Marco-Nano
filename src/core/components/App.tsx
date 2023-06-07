@@ -1,10 +1,15 @@
+import { Comunication } from "./comunication";
 import { List } from "./list";
 
 export function App() {
   return (
     <>
-      <h1>character</h1>
-      <List></List>
+      <div className="app container">
+        <List></List>
+      </div>
+      <div className="comunications">
+        <Comunication></Comunication>
+      </div>
     </>
   );
 }
