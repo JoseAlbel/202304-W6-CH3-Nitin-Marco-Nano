@@ -21,6 +21,12 @@ const characterSlice = createSlice({
   name: "characters",
   initialState,
   reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(loadCharactersAsync.fulfilled, (state, { payload }) => ({
+      ...state,
+      characters: payload,
+    }));
+  },
 });
 
 export default characterSlice.reducer;
