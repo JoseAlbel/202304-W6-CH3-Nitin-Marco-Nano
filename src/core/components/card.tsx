@@ -1,9 +1,15 @@
-export function Card() {
+import { Character } from "../../models/character";
+
+type PropsType = {
+  item: Character;
+};
+
+export function Card({ item }: PropsType) {
   return (
     <li className="character col">
       <div className="card character__card">
         <img
-          src="img/broon.jpg"
+          src={`img/${item.name.toLowerCase()}.jpg`}
           alt="Nombre y familia del personaje"
           className="character__picture card-img-top"
         />
