@@ -7,10 +7,16 @@ type PropsType = {
 };
 
 export function Card({ item }: PropsType) {
-  const { handleKill } = useCharacters();
+  const { handleKill, handleWarcry } = useCharacters();
 
   function handleClick() {
     handleKill(item);
+  }
+
+  function handleCommunication() {
+    if (item.alive) {
+      handleWarcry(item);
+    }
   }
 
   return (
@@ -69,7 +75,12 @@ export function Card({ item }: PropsType) {
               )}
             </ul>
             <div className="character__actions">
-              <button className="character__action btn">habla</button>
+              <button
+                className="character__action btn"
+                onClick={handleCommunication}
+              >
+                habla
+              </button>
               <button className="character__action btn" onClick={handleClick}>
                 muere
               </button>
